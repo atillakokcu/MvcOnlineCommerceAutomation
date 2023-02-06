@@ -124,12 +124,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Classes\Admin.cs" />
     <Compile Include="Models\Classes\Bills.cs" />
     <Compile Include="Models\Classes\Customer.cs" />
     <Compile Include="Models\Classes\Category.cs" />
     <Compile Include="Models\Classes\Department.cs" />
     <Compile Include="Models\Classes\Employee.cs" />
+    <Compile Include="Models\Classes\Expenses.cs" />
+    <Compile Include="Models\Classes\InvoiceAdditions.cs" />
     <Compile Include="Models\Classes\Product.cs" />
+    <Compile Include="Models\Classes\SalesAction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
