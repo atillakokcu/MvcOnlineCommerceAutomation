@@ -18,5 +18,9 @@ namespace MvcOnlineCommerceAutomation.Models.Classes
         public decimal Amount { get; set; }
         public decimal TotalAmount { get; set; }
 
+        public ICollection<Product> Products { get; set; }
+        public ICollection<Customer> Customers { get; set; }
+        public ICollection<Employee> Employees { get; set; }
+
     }
 }
