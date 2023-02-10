@@ -29,6 +29,6 @@ namespace MvcOnlineCommerceAutomation.Models.Classes
         public string CustomerMail { get; set;}
 
 
-        public SalesAction SalesAction { get; set; }
+        public ICollection<SalesAction> SalesActions { get; set; }
     }
 }

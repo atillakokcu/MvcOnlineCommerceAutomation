@@ -25,8 +25,8 @@ namespace MvcOnlineCommerceAutomation.Models.Classes
         public string EmployeeImage { get; set; }
 
 
-        public SalesAction SalesAction { get; set; }
-        public Department Department { get; set; }
+        public ICollection<SalesAction> SalesActions { get; set; }
+        public Department Departments { get; set; }
 
     }
 }

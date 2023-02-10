@@ -22,6 +22,6 @@ namespace MvcOnlineCommerceAutomation.Models.Classes
 
         [Column(TypeName = "Char")]
         [StringLength(1)]
-        public int Authorization { get; set; }
+        public string Authorization { get; set; }
     }
 }
