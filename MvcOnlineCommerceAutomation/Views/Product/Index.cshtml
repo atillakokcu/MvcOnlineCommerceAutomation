@@ -1,0 +1,37 @@
+﻿@using MvcOnlineCommerceAutomation.Models.Classes
+@model List<Product>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>Ürün</th>
+        <th>Marka</th>
+        <th>Stok</th>
+        <th>Alış Fiyat</th>
+        <th>Satış Fiyat</th>
+        <th>Kategori</th>
+        <th>Görsel</th>
+    </tr>
+    @foreach (var u in Model)
+    {
+        <tr>
+            <td>@u.ProductId</td>
+            <td>@u.ProductName</td>
+            <td>@u.ProductBrand</td>
+            <td>@u.ProductStock</td>
+            <td>@u.ProductPurchasePrice</td>
+            <td>@u.ProductSalePrice</td>
+            <td>@u.Category.CategoryName</td>
+            <td>@u.ProductImage</td>
+        </tr>
+
+    }
+</table>
+<button class="btn btn-primary">Yeni ürün ekle</button>
