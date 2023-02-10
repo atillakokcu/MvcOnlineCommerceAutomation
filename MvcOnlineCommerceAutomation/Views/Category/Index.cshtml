@@ -1,4 +1,5 @@
-﻿
+﻿@using MvcOnlineCommerceAutomation.Models.Classes
+@model List<Category>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/AdminLayout.cshtml";
@@ -6,18 +7,26 @@
 
 <table class="table table-bordered" style="margin-top:20px">
     <tr>
-        <th>ID</th>
-        <th>Kategori Adı</th>
+        <td>ID</td>
+        <td>Kategori Adı</td>
+        <td>Sil</td>
+        <td>Güncelle</td>
+
     </tr>
-    <tr>
-        <td>1</td>
-        <td>Beyaz Eşya</td>
-    </tr>
-    <tr>
-        <td>2</td>
-        <td>Telefon Kategorisi</td>
-    </tr>
+    @foreach (var k in Model)
+    {
+        <tr>
+            <td>
+                @k.CategoryId
+            </td>
+            <td>
+                @k.CategoryName
+            </td>
+            <td><a href="/Category/KategoriSil/@k.CategoryId" class="btn btn-danger">Sil</a></td>
+            <td><a href="/Category/KategoriGetir/@k.CategoryId" class="btn btn-success">Güncelle</a></td>
+        </tr>
+    }
 
 </table>
-<button class="btn btn-primary">Yeni kategori ekle</button>
+<a href="/Category/KategoriEkle" class="btn btn-primary">Kategori Ekle</a>
 
