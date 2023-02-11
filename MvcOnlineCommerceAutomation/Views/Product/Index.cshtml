@@ -18,6 +18,9 @@
         <th>Satış Fiyat</th>
         <th>Kategori</th>
         <th>Görsel</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+
     </tr>
     @foreach (var u in Model)
     {
@@ -30,8 +33,14 @@
             <td>@u.ProductSalePrice</td>
             <td>@u.Category.CategoryName</td>
             <td>@u.ProductImage</td>
+            <td>
+                <a href="/Product/UrunSil/@u.ProductId" class="btn btn-danger">Sil </a>
+            </td>
+            <td>
+                <a href="/Product/UrunGetir/@u.ProductId" class="btn btn-success">Güncelle </a>
+            </td>
         </tr>
 
     }
 </table>
-<button class="btn btn-primary">Yeni ürün ekle</button>
+<a href="/Product/YeniUrun" class="btn btn-info">Yeni Ürün Ekle</a>

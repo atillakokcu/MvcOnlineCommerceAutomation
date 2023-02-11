@@ -26,7 +26,9 @@ namespace MvcOnlineCommerceAutomation.Models.Classes
 
 
         public ICollection<SalesAction> SalesActions { get; set; }
-        public Department Departments { get; set; }
+
+        public int DepartmentId { get; set; }
+        public virtual Department Departments { get; set; }
 
     }
 }

@@ -15,6 +15,7 @@ namespace MvcOnlineCommerceAutomation.Models.Classes
         [Column(TypeName = "Varchar")]
         [StringLength(50)]
         public string DepartmentName { get; set; }
+        public bool Status { get; set; }
 
         public ICollection<Employee> Employees { get; set; }
     }

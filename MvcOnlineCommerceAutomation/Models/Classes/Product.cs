@@ -27,6 +27,7 @@ namespace MvcOnlineCommerceAutomation.Models.Classes
         [Column(TypeName = "Varchar")]
         [StringLength(50)]
         public string ProductImage { get; set; }
+        public int CategoryId { get; set; }
         public virtual Category Category { get; set; }
 
 
