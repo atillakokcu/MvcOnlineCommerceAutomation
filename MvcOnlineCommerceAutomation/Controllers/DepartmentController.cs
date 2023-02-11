@@ -67,6 +67,12 @@ namespace MvcOnlineCommerceAutomation.Controllers
             return View(degerler);
         }
 
+        public ActionResult DepartmanPersonelSatis(int Id)
+        {
+            return View();
+
+        }
+
     }
 
 

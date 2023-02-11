@@ -18,9 +18,13 @@ namespace MvcOnlineCommerceAutomation.Models.Classes
         public decimal Amount { get; set; }
         public decimal TotalAmount { get; set; }
 
-        public Product Products { get; set; }
-        public Customer Customers { get; set; }
-        public Employee Employees { get; set; }
+        public int ProductId { get; set; }
+        public int CustomerId { get; set; }
+        public int EmployeeID { get; set; }
+
+        public virtual Product Products { get; set; }
+        public virtual Customer Customers { get; set; }
+        public virtual Employee Employees { get; set; }
 
     }
 }
