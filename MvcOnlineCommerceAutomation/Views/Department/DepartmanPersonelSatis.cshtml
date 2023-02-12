@@ -1,8 +1,40 @@
-﻿
+﻿@using MvcOnlineCommerceAutomation.Models.Classes
+@model List<SalesAction>
 @{
     ViewBag.Title = "DepartmanPersonelSatis";
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
 
-<h2>DepartmanPersonelSatis</h2>
+<br />
+<h2>Departman Personel Satis</h2>
+<br />
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Personel Adı: @ViewBag.dpers</li>
+</ol>
+<table class="table table-success">
+
+    <tr>
+        <th>Satış Id</th>
+        <th>Ürün</th>
+        <th>Cari</th>
+        <th>Fiyat</th>
+        <th>Adet</th>
+        <th>Toplam</th>
+        <th>Tarih</th>
+        <th>Yazdır</th>
+    </tr>
+    @foreach (var i in Model)
+    {
+        <tr>
+            <td>@i.SalesId</td>
+            <td>@i.Products.ProductName</td>
+            <td>@i.Customers.CustomerName  @i.Customers.CustomerSurname</td>
+            <td>@i.TotalAmount</td>
+            <td>@i.Amount</td>
+            <td>@i.Date</td>
+            <td><a href="#" class="btn btn-dark">Yazdır</a></td>
+        </tr>
+    }
+
+</table>
 

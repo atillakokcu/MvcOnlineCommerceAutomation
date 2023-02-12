@@ -69,7 +69,11 @@ namespace MvcOnlineCommerceAutomation.Controllers
 
         public ActionResult DepartmanPersonelSatis(int Id)
         {
-            return View();
+            var degerler = contex.SalesActions.Where(x=>x.EmployeeID == Id).ToList();
+            var per = contex.Employees.Where(x=>x.EmployeeID==Id).Select(y=> y.EmployeeName + " " + y.EmployeeSurname).FirstOrDefault();
+          
+            ViewBag.dpers=per;
+            return View(degerler);
 
         }
 
