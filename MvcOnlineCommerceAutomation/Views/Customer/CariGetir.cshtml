@@ -1,0 +1,37 @@
+﻿@model MvcOnlineCommerceAutomation.Models.Classes.Customer
+@{
+    ViewBag.Title = "CariGetir";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<br />
+<h2>Cari Güncelleme Ekranı</h2>
+<br />
+@using (Html.BeginForm("CariGuncelle", "Customer", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.HiddenFor(z => z.CustomerId)
+        @Html.LabelFor(z => z.CustomerName)
+        @Html.TextBoxFor(z => z.CustomerName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(z => z.CustomerName, "", new { @style = "color:red" })
+        <br />
+        @Html.LabelFor(z => z.CustomerSurname)
+        @Html.TextBoxFor(z => z.CustomerSurname, new { @class = "form-control" })
+        @Html.ValidationMessageFor(z => z.CustomerSurname, "", new { @style = "color:red" })
+        <br />
+        @Html.LabelFor(z => z.CustomerCity)
+        @Html.TextBoxFor(z => z.CustomerCity, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(z => z.CustomerMail)
+        @Html.TextBoxFor(z => z.CustomerMail, new { @class = "form-control" })
+        <br />
+        <button class="btn btn-success">Güncelle</button>
+
+
+
+
+    </div>
+
+
+}
+

@@ -1,0 +1,36 @@
+﻿@using MvcOnlineCommerceAutomation.Models.Classes
+@model List<Customer>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br />
+<table class="table table-striped">
+    <tr>
+        <th>Cari ID</th>
+        <th>Ad</th>
+        <th>Soyad</th>
+        <th>Şehir</th>
+        <th>Mail</th>
+        <th>Sİl</th>
+        <th>Güncelle</th>
+        <th>Detaylar</th>
+    </tr>
+
+    @foreach (var i in Model)
+    {
+        <tr>
+            <td>@i.CustomerId</td>
+            <td>@i.CustomerName</td>
+            <td>@i.CustomerSurname</td>
+            <td>@i.CustomerCity</td>
+            <td>@i.CustomerMail</td>
+            <td><a href="/Customer/CariSil/@i.CustomerId" class="btn btn-danger">Sil</a></td>
+            <td><a href="/Customer/CariGetir/@i.CustomerId" class="btn btn-outline-warning">Güncelle</a></td>
+            <td><a href="/Customer/MusteriSatis/@i.CustomerId" class="btn btn-dark">Detay</a></td>
+        </tr>
+    }
+
+</table>
+<a href="~/Customer/YeniCari" class="btn btn-info"> Yeni Cari ekle</a>
+
