@@ -144,6 +144,7 @@
     <Compile Include="Models\Classes\InvoiceAdditions.cs" />
     <Compile Include="Models\Classes\Product.cs" />
     <Compile Include="Models\Classes\SalesAction.cs" />
+    <Compile Include="Models\Classes\Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
