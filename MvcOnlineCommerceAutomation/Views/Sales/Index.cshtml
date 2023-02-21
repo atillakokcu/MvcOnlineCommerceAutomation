@@ -1,0 +1,39 @@
+﻿@using MvcOnlineCommerceAutomation.Models.Classes
+@model List<SalesAction>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<table class="table table-bordered" style="margin-top:20px">
+    <tr>
+        <td>ID</td>
+        <td>Ürün</td>
+        <td>Cari</td>
+        <td>Personel</td>
+        <td>Adet</td>
+        <td>Fiyat</td>
+        <td>Toplam</td>
+        <td>Tarih</td>
+        <td>Güncelle</td>
+        <td>Detaylar</td>
+
+    </tr>
+    @foreach (var k in Model)
+    {
+        <tr>
+            <td>@k.SalesId</td>
+            <td>@k.Products.ProductName</td>
+            <td>@k.Customers.CustomerName</td>
+            <td>@k.Employees.EmployeeName</td>
+            <td>@k.Piece</td>
+            <td>@k.Amount</td>
+            <td>@k.TotalAmount</td>
+            <td>@k.Date</td>
+            <td><a href="/Employee/PersonelGetir/@k.EmployeeID" class="btn btn-warning">Güncelle</a></td>
+            <td><a href="/Department/DepartmanPersonelSatis/@k.EmployeeID" class="btn btn-default" style="background-color:aquamarine;color:black">Detaylar</a></td>
+        </tr>
+    }
+
+</table>
+<a href="/Sales/YeniSatis" class="btn btn-info">Yeni Satış Yap </a>

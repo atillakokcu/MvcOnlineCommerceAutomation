@@ -1,0 +1,34 @@
+﻿@using MvcOnlineCommerceAutomation.Models.Classes
+@model List<Employee>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<table class="table table-bordered" style="margin-top:20px">
+    <tr>
+        <td>ID</td>
+        <td>Personel Adı</td>
+        <td>Soyad</td>
+        <td>Görsel</td>
+        <td>Departman</td>
+        <td>Güncelle</td>
+        <td>Satışlar</td>
+
+    </tr>
+    @foreach (var k in Model)
+    {
+        <tr>
+            <td>@k.EmployeeID</td>
+            <td>@k.EmployeeName</td>
+            <td>@k.EmployeeSurname</td>
+            <td>@k.EmployeeImage</td>
+            <td>@k.Departments.DepartmentName</td>
+            <td><a href="/Employee/PersonelGetir/@k.EmployeeID" class="btn btn-warning">Güncelle</a></td>
+            <td><a href="/Department/DepartmanPersonelSatis/@k.EmployeeID" class="btn btn-default" style="background-color:aquamarine;color:black">Detaylar</a></td>
+        </tr>
+    }
+
+</table>
+<a href="/Employee/PersonelEkle" class="btn btn-info">Personel Ekle </a>
+

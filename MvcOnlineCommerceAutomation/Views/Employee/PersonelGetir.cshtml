@@ -1,0 +1,34 @@
+﻿@model MvcOnlineCommerceAutomation.Models.Classes.Employee
+@{
+    ViewBag.Title = "PersonelGetir";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<br />
+<h2>Personel Güncelleme Ekranı</h2>
+<br />
+@using (Html.BeginForm("PersonelGuncelle", "Employee", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.HiddenFor(z => z.EmployeeID)
+        @Html.LabelFor(z => z.EmployeeName)
+        @Html.TextBoxFor(z => z.EmployeeName, new { @class = "form-control" })
+
+        <br />
+        @Html.LabelFor(z => z.EmployeeSurname)
+        @Html.TextBoxFor(z => z.EmployeeSurname, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(z => z.EmployeeImage)
+        @Html.TextBoxFor(z => z.EmployeeImage, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(z => z.Departments)
+        @Html.DropDownListFor(x => x.DepartmentId, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })        <br />
+        <button class="btn btn-success">Güncelle</button>
+
+
+
+
+    </div>
+
+
+}
