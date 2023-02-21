@@ -303,6 +303,7 @@
     <Content Include="Views\Employee\PersonelGetir.cshtml" />
     <Content Include="Views\Sales\Index.cshtml" />
     <Content Include="Views\Sales\YeniSatis.cshtml" />
+    <Content Include="Views\Sales\SatisGetir.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -29,8 +29,8 @@
             <td>@k.Piece</td>
             <td>@k.Amount</td>
             <td>@k.TotalAmount</td>
-            <td>@k.Date</td>
-            <td><a href="/Employee/PersonelGetir/@k.EmployeeID" class="btn btn-warning">Güncelle</a></td>
+            <td>@k.Date.ToShortDateString()</td>
+            <td><a href="/Sales/SatisGetir/@k.SalesId" class="btn btn-warning">Güncelle</a></td>
             <td><a href="/Department/DepartmanPersonelSatis/@k.EmployeeID" class="btn btn-default" style="background-color:aquamarine;color:black">Detaylar</a></td>
         </tr>
     }

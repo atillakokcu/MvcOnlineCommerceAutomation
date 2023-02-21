@@ -1,13 +1,15 @@
 ﻿@model MvcOnlineCommerceAutomation.Models.Classes.SalesAction
 @{
-    ViewBag.Title = "YeniSatis";
+    ViewBag.Title = "SatisGetir";
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
 
-<br />
-<h2>Yeni Satış Sayfası</h2>
-<br />
-<form class="form-group" method="post">
+<h2>Satış İşlemi Güncelleme Sayfası</h2>
+
+@using (Html.BeginForm("SatisGuncelle", "Sales", FormMethod.Post))
+{
+
+    @Html.HiddenFor(x => x.SalesId)
 
     @Html.LabelFor(x => x.Products)
     @Html.DropDownListFor(x => x.ProductId, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
@@ -17,6 +19,7 @@
     <br />
     @Html.LabelFor(x => x.Employees)
     @Html.DropDownListFor(x => x.EmployeeID, (List<SelectListItem>)ViewBag.dgr3, new { @class = "form-control" })
+    
     <br />
     @Html.LabelFor(x => x.Piece)
     @Html.TextBoxFor(x => x.Piece, new { @class = "form-control" })
@@ -27,9 +30,10 @@
     @Html.LabelFor(x => x.TotalAmount)
     @Html.TextBoxFor(x => x.TotalAmount, new { @class = "form-control" })
     <br />
-    <button class="btn btn-primary">Satış Yap</button>
+    @Html.LabelFor(x => x.Date)
+    @Html.TextBoxFor(x => x.Date, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-warning">Güncelle</button>
 
-
-</form>
-
+}
 
