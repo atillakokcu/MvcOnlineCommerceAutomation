@@ -1,0 +1,38 @@
+﻿@using MvcOnlineCommerceAutomation.Models.Classes
+@model List<SalesAction>
+@{
+    ViewBag.Title = "SatisDetay";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>Satış Detayı</h2>
+<br />
+
+<table class="table table-success">
+
+    <tr>
+        <th>Satış Id</th>
+        <th>Ürün</th>
+        <th>Cari</th>
+        <th>Personel</th>
+        <th>Fiyat</th>
+        <th>Adet</th>
+        <th>Toplam</th>
+        <th>Tarih</th>
+    </tr>
+    @foreach (var i in Model)
+    {
+        <tr>
+            <td>@i.SalesId</td>
+            <td>@i.Products.ProductName</td>
+            <td>@i.Customers.CustomerName  @i.Customers.CustomerSurname</td>
+            <td>@i.Employees.EmployeeName  @i.Employees.EmployeeSurname</td>
+            <td>@i.TotalAmount</td>
+            <td>@i.Amount</td>
+            <td>@i.Date</td>
+        </tr>
+    }
+
+</table>
+<button class="btn btn-outline-warning">Yazdır</button>
+

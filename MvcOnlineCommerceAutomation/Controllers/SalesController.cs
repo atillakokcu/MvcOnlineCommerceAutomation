@@ -111,5 +111,12 @@ namespace MvcOnlineCommerceAutomation.Controllers
         }
 
 
+        public ActionResult SatisDetay(int Id)
+        {
+            var degerler = contex.SalesActions.Where(x => x.SalesId == Id).ToList();
+            return View(degerler);  
+
+        }
+
     }
 }

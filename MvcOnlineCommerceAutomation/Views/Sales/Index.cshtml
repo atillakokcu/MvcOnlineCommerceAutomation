@@ -4,21 +4,22 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
-
-<table class="table table-bordered" style="margin-top:20px">
-    <tr>
-        <td>ID</td>
-        <td>Ürün</td>
-        <td>Cari</td>
-        <td>Personel</td>
-        <td>Adet</td>
-        <td>Fiyat</td>
-        <td>Toplam</td>
-        <td>Tarih</td>
-        <td>Güncelle</td>
-        <td>Detaylar</td>
-
-    </tr>
+<br />
+<table id="tbl1" class="table table-bordered" style="margin-top:20px">
+    <thead>
+        <tr>
+            <td>ID</td>
+            <td>Ürün</td>
+            <td>Cari</td>
+            <td>Personel</td>
+            <td>Adet</td>
+            <td>Fiyat</td>
+            <td>Toplam</td>
+            <td>Tarih</td>
+            <td>Güncelle</td>
+            <td>Detaylar</td>
+        </tr>
+    </thead>
     @foreach (var k in Model)
     {
         <tr>
@@ -31,9 +32,26 @@
             <td>@k.TotalAmount</td>
             <td>@k.Date.ToShortDateString()</td>
             <td><a href="/Sales/SatisGetir/@k.SalesId" class="btn btn-warning">Güncelle</a></td>
-            <td><a href="/Department/DepartmanPersonelSatis/@k.EmployeeID" class="btn btn-default" style="background-color:aquamarine;color:black">Detaylar</a></td>
+            <td><a href="/Sales/SatisDetay/@k.SalesId" class="btn btn-default" style="background-color:aquamarine;color:black">Detaylar</a></td>
         </tr>
     }
 
 </table>
 <a href="/Sales/YeniSatis" class="btn btn-info">Yeni Satış Yap </a>
+
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+
+<script>
+    $('#tbl1').dataTable({}); // data table ın uygulanacağı tablo
+</script>
+
