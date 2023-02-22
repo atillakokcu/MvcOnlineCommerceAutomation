@@ -541,6 +541,7 @@
     <Content Include="Views\Sales\YeniSatis.cshtml" />
     <Content Include="Views\Sales\SatisGetir.cshtml" />
     <Content Include="Views\Sales\SatisDetay.cshtml" />
+    <Content Include="Views\Product\UrunListesi.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

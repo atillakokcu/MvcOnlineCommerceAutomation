@@ -84,5 +84,12 @@ namespace MvcOnlineCommerceAutomation.Controllers
             return RedirectToAction("Index");
 
         }
+
+        public ActionResult UrunListesi()
+        {
+            var degerler = contex.Products.ToList();
+            return View(degerler);
+
+        }
     }
 }
