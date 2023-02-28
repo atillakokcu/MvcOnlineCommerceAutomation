@@ -65,5 +65,21 @@ namespace MvcOnlineCommerceAutomation.Controllers
             return View(degerler);
 
         }
+
+        [HttpGet]
+        public ActionResult YeniKalem()
+        {
+            return View();
+
+        }
+
+        [HttpPost]
+        public ActionResult YeniKalem(InvoiceAdditions FaturaKalem)
+        {
+            context.InvoiceAdditionss.Add(FaturaKalem);
+            context.SaveChanges();
+            return RedirectToAction("Index");   
+
+        }
     }
 }
