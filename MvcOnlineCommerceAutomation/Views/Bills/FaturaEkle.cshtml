@@ -1,0 +1,39 @@
+﻿@model MvcOnlineCommerceAutomation.Models.Classes.Bills
+@{
+    ViewBag.Title = "FaturaEkle";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<br />
+<h2>Yeni Fatura Sayfası</h2>
+<br />
+<form class="form-group" method="post">
+
+    @Html.LabelFor(x => x.BillSerialNo)
+    @Html.TextBoxFor(x => x.BillSerialNo, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.BillSiraNo)
+    @Html.TextBoxFor(x => x.BillSiraNo, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.BillDate)
+    @Html.TextBoxFor(x => x.BillDate, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.BillTime)
+    @Html.TextBoxFor(x => x.BillTime, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.TaxOffice)
+    @Html.TextBoxFor(x => x.TaxOffice, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.TeslimEden)
+    @Html.TextBoxFor(x => x.TeslimEden, new { @class = "form-control" })
+    <br />
+    @Html.LabelFor(x => x.TeslimAlan)
+    @Html.TextBoxFor(x => x.TeslimAlan, new { @class = "form-control" })
+    <br />
+
+    <button class="btn btn-primary">Kaydet</button>
+
+
+</form>
+
+

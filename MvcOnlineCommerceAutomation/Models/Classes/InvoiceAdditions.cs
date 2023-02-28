@@ -18,7 +18,8 @@ namespace MvcOnlineCommerceAutomation.Models.Classes
         public int InvoiceAmount { get; set; }
         public decimal InvoiceUnitPrice { get; set; }
         public decimal InvoiceTotalPrice { get; set; }
-        public Bills Bills { get; set; }
+        public int BillId { get; set; }
+        public virtual Bills Bills { get; set; }
 
     }
 }

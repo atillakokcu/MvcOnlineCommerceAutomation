@@ -1,0 +1,45 @@
+﻿@using MvcOnlineCommerceAutomation.Models.Classes
+@model List<Bills>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<table class="table table-bordered" style="margin-top:20px">
+    <tr>
+        <td>ID</td>
+        <td>Seri No</td>
+        <td>Sıra No</td>
+        <td>Vergi Dairesi</td>
+        <td>Tarih</td>
+        <td>Saat</td>
+        <td>Toplam</td>
+        <td>Teslim Eden</td>
+        <td>Teslim Alan</td>
+        <td>Güncelle</td>
+        <td>Detaylar</td>
+
+
+    </tr>
+    @foreach (var k in Model)
+    {
+        <tr>
+            <td> @k.BillId</td>
+            <td> @k.BillSerialNo</td>
+            <td> @k.BillSiraNo</td>
+            <td> @k.TaxOffice</td>
+            <td> @k.BillDate</td>
+            <td> @k.BillTime</td>
+            <td> @k.Toplam</td>
+            <td> @k.TeslimEden</td>
+            <td> @k.TeslimAlan</td>
+            <td><a href="/Bills/FaturaGetir/@k.BillId" class="btn btn-warning">Güncelle</a></td>
+            <td><a href="/Bills/FaturaDetay/@k.BillId" class="btn btn-default" style="background-color:aquamarine;color:black">Detaylar</a></td>
+        </tr>
+    }
+
+</table>
+<a href="/Bills/FaturaEkle" class="btn btn-info">Yeni Fatura Girişi</a>
+
+
+

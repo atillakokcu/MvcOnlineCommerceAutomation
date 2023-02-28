@@ -1,0 +1,38 @@
+﻿@using MvcOnlineCommerceAutomation.Models.Classes
+@model List<InvoiceAdditions>
+@{
+    ViewBag.Title = "FaturaDetay";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<br />
+<h2>Fatura Kalemleri Sayfası</h2>
+<br />
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active"></li>
+</ol>
+
+<table class="table table-hover">
+    <tr>
+        <th> Id</th>
+        <th> Açıklama</th>
+        <th> Miktar</th>
+        <th> Birim Fiyat</th>
+        <th> Tutar</th>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.InvoiceAdditionsId</td>
+            <td>@x.InvoiceDescription</td>
+            <td>@x.InvoiceAmount</td>
+            <td>@x.InvoiceUnitPrice</td>
+            <td>@x.InvoiceTotalPrice</td>
+            <td> <a href="/Department/DepartmanPersonelSatis/@x.BillId" class="btn btn-success">Detay</a></td>
+        </tr>
+    }
+
+
+</table>
+
+<a href="#" class="btn btn-link">Yeni Kalem Girişi</a>
