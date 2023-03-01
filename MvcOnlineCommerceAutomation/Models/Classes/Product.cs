@@ -19,7 +19,7 @@ namespace MvcOnlineCommerceAutomation.Models.Classes
         [Column(TypeName = "Varchar")]
         [StringLength(30)]
         public string ProductBrand { get; set; }
-        public string ProductStock { get; set; }
+        public int ProductStock { get; set; }
         public decimal ProductPurchasePrice { get; set; }
         public decimal ProductSalePrice { get; set; }
         public bool Status { get; set; }
