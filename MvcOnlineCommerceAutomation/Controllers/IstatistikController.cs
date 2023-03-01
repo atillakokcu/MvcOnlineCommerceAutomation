@@ -13,7 +13,7 @@ namespace MvcOnlineCommerceAutomation.Controllers
         // GET: Istatistik
         public ActionResult Index()
         {
-            var deger1=contex.Customers.Count().ToString();
+            var deger1 = contex.Customers.Count().ToString();
             ViewBag.d1 = deger1;
             var deger2 = contex.Products.Count().ToString();
             ViewBag.d2 = deger2;
@@ -21,11 +21,40 @@ namespace MvcOnlineCommerceAutomation.Controllers
             ViewBag.d3 = deger3;
             var deger4 = contex.Categorys.Count().ToString();
             ViewBag.d4 = deger4;
-            var deger5 = contex.Products.Sum(x=>x.ProductStock).ToString();
+            var deger5 = contex.Products.Sum(x => x.ProductStock).ToString();
             ViewBag.d5 = deger5;
-
-            var deger7 = contex.Products.Count(x => x.ProductStock<=20).ToString();
+            var deger6 = (from x in contex.Products select x.ProductBrand).Distinct().Count(); // distinc listedeki elemanları tekrarsız getirmeye yarıyor.
+            ViewBag.d6 = deger6;
+            var deger7 = contex.Products.Count(x => x.ProductStock <= 20).ToString();
             ViewBag.d7 = deger7;
+            var deger8 = (from data in contex.Products orderby data.ProductSalePrice descending select data.ProductName).FirstOrDefault();
+            ViewBag.d8 = deger8;
+            var deger9 = (from data in contex.Products orderby data.ProductSalePrice ascending select data.ProductName).FirstOrDefault();
+            ViewBag.d9 = deger9;
+            var deger10 = contex.Products.Count(x => x.ProductName == "Buzdolabı").ToString();
+            ViewBag.d10 = deger10;
+            var deger11 = contex.Products.Count(x => x.ProductName == "bilgisayar").ToString();
+            ViewBag.d11 = deger11;
+
+            var deger12 = contex.Products.GroupBy(x => x.ProductBrand).OrderByDescending(z => z.Count()).Select(y => y.Key).FirstOrDefault(); // orderbydescetin isme göre tersten sıralama  // key ise guruplandırğım şeyin ismi yani marka
+            ViewBag.d12 = deger12;
+
+            var deger14 = contex.SalesActions.Sum(x => x.TotalAmount).ToString();
+            ViewBag.d14 = deger14;
+            DateTime bugun = DateTime.Today;
+            var deger15 = contex.SalesActions.Count(x => x.Date == bugun).ToString();
+            ViewBag.d15 = deger15;
+            
+            try
+            {
+                var deger16 = (from data in contex.SalesActions where data.Date == bugun select data).Sum(x => x.TotalAmount);
+            }
+            catch (Exception)
+            {
+
+                ViewBag.d16 = 0;
+            }
+            
             return View();
         }
     }
