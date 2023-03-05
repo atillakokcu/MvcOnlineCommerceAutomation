@@ -19,6 +19,7 @@ namespace MvcOnlineCommerceAutomation.Models.Classes
         public DbSet<InvoiceAdditions> InvoiceAdditionss { get; set; }
         public DbSet<Product> Products{ get; set; }
         public DbSet<SalesAction> SalesActions { get; set; }
+        public DbSet<Detay> Detays { get; set;}
 
     }
 }

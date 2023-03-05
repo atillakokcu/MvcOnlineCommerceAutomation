@@ -39,6 +39,9 @@ namespace MvcOnlineCommerceAutomation.Controllers
             var deger12 = contex.Products.GroupBy(x => x.ProductBrand).OrderByDescending(z => z.Count()).Select(y => y.Key).FirstOrDefault(); // orderbydescetin isme göre tersten sıralama  // key ise guruplandırğım şeyin ismi yani marka
             ViewBag.d12 = deger12;
 
+            var deger13 =contex.Products.Where(u=>u.ProductId== (contex.SalesActions.GroupBy(x=>x.ProductId).OrderByDescending(z=>z.Count()).Select(y=>y.Key).FirstOrDefault())).Select(k=>k.ProductName).FirstOrDefault();
+            ViewBag.d13 = deger13;
+
             var deger14 = contex.SalesActions.Sum(x => x.TotalAmount).ToString();
             ViewBag.d14 = deger14;
             DateTime bugun = DateTime.Today;
