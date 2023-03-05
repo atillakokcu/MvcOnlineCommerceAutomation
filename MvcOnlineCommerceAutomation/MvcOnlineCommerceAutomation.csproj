@@ -154,6 +154,7 @@
     <Compile Include="Models\Classes\Product.cs" />
     <Compile Include="Models\Classes\SalesAction.cs" />
     <Compile Include="Models\Classes\SinifGrup.cs" />
+    <Compile Include="Models\Classes\SinifGrup2.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -2855,6 +2856,7 @@
     <Content Include="thumber\scss\_site-navbar.scss" />
     <Content Include="Views\UrunDetay\Index.cshtml" />
     <Content Include="Views\Istatistik\KolayTablolar.cshtml" />
+    <Content Include="Views\Istatistik\Partial1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

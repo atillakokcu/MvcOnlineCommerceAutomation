@@ -72,5 +72,17 @@ namespace MvcOnlineCommerceAutomation.Controllers
                          });
             return View(sorgu.ToList());
         }
+
+        public PartialViewResult Partial1()
+        {
+            var sorgu2 = (from x in contex.Employees
+                          group x by x.DepartmentId into g
+                          select new SinifGrup2
+                          {
+                              Departman = g.Key,
+                              Sayi = g.Count(),
+                          });
+            return PartialView(sorgu2.ToList());
+        }
     }
 }
