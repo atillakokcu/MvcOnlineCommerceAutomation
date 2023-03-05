@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Management;
 using System.Web.Mvc;
 using MvcOnlineCommerceAutomation.Models.Classes;
 
@@ -96,6 +97,20 @@ namespace MvcOnlineCommerceAutomation.Controllers
             var sorgu = contex.Products.ToList();
             return PartialView(sorgu);
         }
+
+        public PartialViewResult Partial4()
+        {
+            var sorgu3 = (from x in contex.Products
+                         group x by x.ProductBrand into g
+                         select new SinifGrup3
+                         {
+                             Marka = g.Key,
+                             Sayi = g.Count(),
+                         });
+            return PartialView(sorgu3.ToList());
+        }
+
+
     }
 
     
