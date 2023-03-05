@@ -84,5 +84,19 @@ namespace MvcOnlineCommerceAutomation.Controllers
                           });
             return PartialView(sorgu2.ToList());
         }
+
+
+        public PartialViewResult Partial2()
+        {
+            var sorgu = contex.Customers.ToList();
+            return PartialView(sorgu);
+        }
+        public PartialViewResult Partial3()
+        {
+            var sorgu = contex.Products.ToList();
+            return PartialView(sorgu);
+        }
     }
+
+    
 }
