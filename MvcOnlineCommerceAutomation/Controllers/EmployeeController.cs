@@ -71,6 +71,10 @@ namespace MvcOnlineCommerceAutomation.Controllers
 
         }
 
+        public ActionResult PersonelListe()
+        {
 
+            return View();
+        }
     }
 }

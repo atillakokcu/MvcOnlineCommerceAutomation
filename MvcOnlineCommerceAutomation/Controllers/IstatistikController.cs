@@ -77,7 +77,7 @@ namespace MvcOnlineCommerceAutomation.Controllers
         public PartialViewResult Partial1()
         {
             var sorgu2 = (from x in contex.Employees
-                          group x by x.DepartmentId into g
+                          group x by x.Departments.DepartmentName into g
                           select new SinifGrup2
                           {
                               Departman = g.Key,
