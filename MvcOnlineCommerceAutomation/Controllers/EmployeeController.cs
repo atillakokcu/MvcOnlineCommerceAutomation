@@ -73,8 +73,8 @@ namespace MvcOnlineCommerceAutomation.Controllers
 
         public ActionResult PersonelListe()
         {
-
-            return View();
+            var sorgu = contex.Employees.ToList();
+            return View(sorgu);
         }
     }
 }
