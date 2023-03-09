@@ -20,6 +20,7 @@ namespace MvcOnlineCommerceAutomation.Models.Classes
         public DbSet<Product> Products{ get; set; }
         public DbSet<SalesAction> SalesActions { get; set; }
         public DbSet<Detay> Detays { get; set;}
+        public DbSet<Yapilacak>Yapilacaks { get;set; }
 
     }
 }

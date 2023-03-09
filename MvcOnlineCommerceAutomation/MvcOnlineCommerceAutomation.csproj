@@ -136,6 +136,7 @@
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\SalesController.cs" />
     <Compile Include="Controllers\UrunDetayController.cs" />
+    <Compile Include="Controllers\YapilacakController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -156,6 +157,7 @@
     <Compile Include="Models\Classes\SinifGrup.cs" />
     <Compile Include="Models\Classes\SinifGrup2.cs" />
     <Compile Include="Models\Classes\SinifGrup3.cs" />
+    <Compile Include="Models\Classes\Yapilacak.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -2862,6 +2864,7 @@
     <Content Include="Views\Istatistik\Partial3.cshtml" />
     <Content Include="Views\Istatistik\Partial4.cshtml" />
     <Content Include="Views\Employee\PersonelListe.cshtml" />
+    <Content Include="Views\Yapilacak\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
