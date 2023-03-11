@@ -91,18 +91,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!-- login form popup-->
     <div class="pop-up">
         <div id="small-dialog" class="mfp-hide book-form">
-
             <div class="login-form login-form-left">
                 <div class="agile-row">
                     <h3>Cari Giriş Formu</h3>
                     <span class="fa fa-lock"></span>
                     <div class="clear"></div>
                     <div class="login-agileits-top">
-                        <form action="#" method="post">
+                        @using (Html.BeginForm("CariLogin1", "Login", FormMethod.Post))
+                        {
                             <input type="text" class="name" name="CustomerMail" Placeholder="Mail Adresiniz" required="" />
                             <input type="password" class="password" name="CustomerPassword" Placeholder="Şifreniz" required="" />
                             <input type="submit" value="Giriş Yap">
-                        </form>
+                        }
                     </div>
                     <div class="login-agileits-bottom">
                         <h6><a href="#">Şifremi Unuttum?</a></h6>
@@ -111,6 +111,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
 
         </div>
+
+
     </div>
     <!-- //login form popup-->
     <!-- subscribe form popup-->

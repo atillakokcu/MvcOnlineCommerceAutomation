@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace MvcOnlineCommerceAutomation.Controllers
 {
@@ -36,5 +37,30 @@ namespace MvcOnlineCommerceAutomation.Controllers
 
         }
 
+        [HttpGet]
+        public ActionResult CariLogin1()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CariLogin1(Customer customers)
+        {
+
+            var bilgiler = context.Customers.FirstOrDefault(x => x.CustomerMail == customers.CustomerMail && x.CustomerPassword == customers.CustomerPassword);
+
+            if (bilgiler != null)
+            {
+                FormsAuthentication.SetAuthCookie(bilgiler.CustomerMail, false);
+                Session["CustomerMail"] = bilgiler.CustomerMail.ToString();
+                return RedirectToAction("Index", "CariPanel");
+            }
+            else 
+            { 
+                return RedirectToAction("Index","Login"); 
+            }
+
+        }
     }
 }
