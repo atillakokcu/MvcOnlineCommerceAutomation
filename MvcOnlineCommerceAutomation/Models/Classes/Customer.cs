@@ -29,6 +29,10 @@ namespace MvcOnlineCommerceAutomation.Models.Classes
         [StringLength(50)]
         public string CustomerMail { get; set;}
 
+        [Column(TypeName = "Varchar")]
+        [StringLength(20)]
+        public string CustomerPassword { get; set; }
+
         public bool status { get; set; }
 
         public ICollection<SalesAction> SalesActions { get; set; }
