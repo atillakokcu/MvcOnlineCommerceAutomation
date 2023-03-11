@@ -20,5 +20,14 @@ namespace MvcOnlineCommerceAutomation.Controllers
             ViewBag.m = Mail;
             return View(degerler);
         }
+
+        [Authorize]
+        public ActionResult Siparislerim()
+        {
+            var Mail = (string)Session["CustomerMail"];
+            var Id=context.Customers.Where(x=>x.CustomerMail== Mail.ToString()).Select(y=>y.CustomerId).FirstOrDefault();
+            var degerler = context.SalesActions.Where(x=>x.CustomerId==Id).ToList();
+            return View(degerler);
+        }
     }
 }
