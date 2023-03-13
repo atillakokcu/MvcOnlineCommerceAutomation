@@ -62,5 +62,31 @@ namespace MvcOnlineCommerceAutomation.Controllers
             }
 
         }
+
+        [HttpGet]
+        public ActionResult AdminLogin()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AdminLogin(Admin admin)
+        {
+            var bilgiler = context.Admins.FirstOrDefault(x=>x.AdminName== admin.AdminName && x.AdminPassword==admin.AdminPassword);
+            if (bilgiler != null)
+            {
+                FormsAuthentication.SetAuthCookie(bilgiler.AdminName, false);
+                Session["AdminName"]=bilgiler.AdminName.ToString();
+                return RedirectToAction("Index", "Category");
+            }
+            else
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
+
+            return View();
+        }
+
     }
 }
