@@ -13,19 +13,15 @@
 
 <table class="table table-hover">
     <tr>
-        <th>Personel Id</th>
         <th> Ad</th>
         <th> Soyad</th>
-        <th> Görsel</th>
         <th> Satışlar</th>
     </tr>
     @foreach (var x in Model)
     {
         <tr>
-            <td>@x.EmployeeID</td>
             <td>@x.EmployeeName</td>
             <td>@x.EmployeeSurname</td>
-            <td>@x.EmployeeImage</td>
             <td> <a href="/Department/DepartmanPersonelSatis/@x.EmployeeID" class="btn btn-success">Detay</a></td>
         </tr>
     }
