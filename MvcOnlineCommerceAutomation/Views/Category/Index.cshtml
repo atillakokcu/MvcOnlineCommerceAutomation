@@ -1,5 +1,7 @@
 ﻿@using MvcOnlineCommerceAutomation.Models.Classes
-@model List<Category>
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Category>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/AdminLayout.cshtml";
@@ -7,7 +9,6 @@
 
 <table class="table table-bordered" style="margin-top:20px">
     <tr>
-        <td>ID</td>
         <td>Kategori Adı</td>
         <td>Sil</td>
         <td>Güncelle</td>
@@ -17,9 +18,6 @@
     {
         <tr>
             <td>
-                @k.CategoryId
-            </td>
-            <td>
                 @k.CategoryName
             </td>
             <td><a href="/Category/KategoriSil/@k.CategoryId" class="btn btn-danger">Sil</a></td>
@@ -28,5 +26,6 @@
     }
 
 </table>
+@Html.PagedListPager((IPagedList)Model,sayfa=>Url.Action("Index",new {sayfa}))
 <a href="/Category/KategoriEkle" class="btn btn-primary">Kategori Ekle</a>
 

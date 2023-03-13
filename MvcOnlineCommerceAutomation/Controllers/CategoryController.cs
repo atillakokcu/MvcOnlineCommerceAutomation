@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MvcOnlineCommerceAutomation.Models.Classes;
+using PagedList;
+using PagedList.Mvc;
 
 namespace MvcOnlineCommerceAutomation.Controllers
 {
@@ -11,9 +13,9 @@ namespace MvcOnlineCommerceAutomation.Controllers
     {
         // GET: Category
         Context context = new Context();
-        public ActionResult Index()
+        public ActionResult Index(int sayfa=1)
         {
-            var degerler = context.Categorys.ToList();
+            var degerler = context.Categorys.ToList().ToPagedList(sayfa, 4);
             return View(degerler);
         }
         [HttpGet]
