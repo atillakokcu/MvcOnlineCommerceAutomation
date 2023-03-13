@@ -12,10 +12,15 @@ namespace MvcOnlineCommerceAutomation.Controllers
     {
         Context contex = new Context();
         // GET: Product
-        public ActionResult Index()
+        public ActionResult Index(string p)
         {
-            var Urunler = contex.Products.Where(x => x.Status == true).ToList();
-            return View(Urunler);
+            var Urunler = from x in contex.Products select x;
+
+            if (!string.IsNullOrEmpty(p))
+            {
+                Urunler = Urunler.Where(y=>y.ProductName.Contains(p));
+            }
+            return View(Urunler.ToList());
         }
 
         [HttpGet]
