@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -29,6 +30,7 @@ namespace MvcOnlineCommerceAutomation.Controllers
         [HttpPost]
         public ActionResult YeniCari(Customer customer)
         {
+           
             customer.status = true;
             contex.Customers.Add(customer);
             

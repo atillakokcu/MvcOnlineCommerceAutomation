@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -37,6 +38,15 @@ namespace MvcOnlineCommerceAutomation.Controllers
         [HttpPost]
         public ActionResult PersonelEkle(Employee employee)
         {
+            if (Request.Files.Count > 0)
+            {
+                string DosyaAdi = Path.GetFileName(Request.Files[0].FileName);
+                string Uzanti = Path.GetExtension(Request.Files[0].FileName);
+                string Yol = "~/Image/" + DosyaAdi + Uzanti;
+                Request.Files[0].SaveAs(Server.MapPath(Yol)); // resmi sunucu içerisindeki açtığımız klasorun içerisine kaydetme
+                employee.EmployeeImage= "/Image/"+DosyaAdi + Uzanti;
+
+            }
             contex.Employees.Add(employee);
             contex.SaveChanges();
             return RedirectToAction("Index");
