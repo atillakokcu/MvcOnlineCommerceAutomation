@@ -48,17 +48,17 @@ namespace MvcOnlineCommerceAutomation.Controllers
             DateTime bugun = DateTime.Today;
             var deger15 = contex.SalesActions.Count(x => x.Date == bugun).ToString();
             ViewBag.d15 = deger15;
-            
+            var deger16 = "";
             try
             {
-                var deger16 = (from data in contex.SalesActions where data.Date == bugun select data).Sum(x => x.TotalAmount);
+                 deger16 = (from data in contex.SalesActions where data.Date == bugun select data).Sum(x => x.TotalAmount).ToString();
             }
             catch (Exception)
             {
 
                 ViewBag.d16 = 0;
             }
-            
+            ViewBag.d16 = deger16;
             return View();
         }
 
