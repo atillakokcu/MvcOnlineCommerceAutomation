@@ -71,6 +71,15 @@ namespace MvcOnlineCommerceAutomation.Controllers
 
         public ActionResult PersonelGuncelle(Employee Personel)
         {
+            if (Request.Files.Count > 0)
+            {
+                string DosyaAdi = Path.GetFileName(Request.Files[0].FileName);
+                string Uzanti = Path.GetExtension(Request.Files[0].FileName);
+                string Yol = "~/Image/" + DosyaAdi + Uzanti;
+                Request.Files[0].SaveAs(Server.MapPath(Yol)); // resmi sunucu içerisindeki açtığımız klasorun içerisine kaydetme
+                Personel.EmployeeImage = "/Image/" + DosyaAdi + Uzanti;
+
+            }
             var personel = contex.Employees.Find(Personel.EmployeeID);   
             personel.EmployeeName = Personel.EmployeeName;
             personel.EmployeeImage = Personel.EmployeeImage;

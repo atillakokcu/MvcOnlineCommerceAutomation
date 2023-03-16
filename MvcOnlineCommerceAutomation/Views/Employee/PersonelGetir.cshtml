@@ -7,7 +7,7 @@
 <br />
 <h2>Personel Güncelleme Ekranı</h2>
 <br />
-@using (Html.BeginForm("PersonelGuncelle", "Employee", FormMethod.Post))
+@using (Html.BeginForm("PersonelGuncelle", "Employee", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     <div class="form-group">
         @Html.HiddenFor(z => z.EmployeeID)
@@ -19,7 +19,7 @@
         @Html.TextBoxFor(z => z.EmployeeSurname, new { @class = "form-control" })
         <br />
         @Html.LabelFor(z => z.EmployeeImage)
-        @Html.TextBoxFor(z => z.EmployeeImage, new { @class = "form-control" })
+        <input type="file" name="CustomerImage"/>
         <br />
         @Html.LabelFor(z => z.Departments)
         @Html.DropDownListFor(x => x.DepartmentId, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })        <br />
