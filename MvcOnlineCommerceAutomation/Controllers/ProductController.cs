@@ -18,7 +18,7 @@ namespace MvcOnlineCommerceAutomation.Controllers
 
             if (!string.IsNullOrEmpty(p))
             {
-                Urunler = Urunler.Where(y=>y.ProductName.Contains(p));
+                Urunler = Urunler.Where(y => y.ProductName.Contains(p));
             }
             return View(Urunler.ToList());
         }
@@ -32,7 +32,7 @@ namespace MvcOnlineCommerceAutomation.Controllers
                                                Text = x.CategoryName,
                                                Value = x.CategoryId.ToString()
                                            }).ToList();
-            ViewBag.dgr1=deger1;
+            ViewBag.dgr1 = deger1;
             return View();
         }
 
@@ -64,12 +64,12 @@ namespace MvcOnlineCommerceAutomation.Controllers
                                                Value = x.CategoryId.ToString()
                                            }).ToList();
 
-            ViewBag.dgr1=deger1;
+            ViewBag.dgr1 = deger1;
 
 
-            var urundeger=contex.Products.Find(Id);
+            var urundeger = contex.Products.Find(Id);
 
-            return View("UrunGetir",urundeger); 
+            return View("UrunGetir", urundeger);
 
         }
 
@@ -95,6 +95,35 @@ namespace MvcOnlineCommerceAutomation.Controllers
             var degerler = contex.Products.ToList();
             return View(degerler);
 
+        }
+        [HttpGet]
+        public ActionResult SatisYap(int Id)
+        {
+            List<SelectListItem> deger3 = (from x in contex.Employees.ToList()
+                                           select new SelectListItem
+                                           {
+                                               Text = x.EmployeeName + " " + x.EmployeeSurname,
+                                               Value = x.EmployeeID.ToString(),
+                                           }).ToList();
+
+            ViewBag.dgr3 = deger3;
+
+            var deger1 = contex.Products.Find(Id);
+            ViewBag.dgr1 = deger1.ProductId;
+            ViewBag.dgr2 = deger1.ProductPurchasePrice;
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult SatisYap(SalesAction salesaction)
+        {
+            salesaction.Date = DateTime.Parse(DateTime.Now.ToShortDateString());
+            contex.SalesActions.Add(salesaction);
+            contex.SaveChanges();
+            return RedirectToAction("Index","Sales");
+
+            
         }
     }
 }

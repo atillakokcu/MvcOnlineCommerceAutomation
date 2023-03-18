@@ -26,6 +26,7 @@
         <th>Kategori</th>
         <th>Sil</th>
         <th>Güncelle</th>
+        <th>Satış yap</th>
 
     </tr>
     @foreach (var u in Model)
@@ -42,6 +43,9 @@
             </td>
             <td>
                 <a href="/Product/UrunGetir/@u.ProductId" class="btn btn-success">Güncelle </a>
+            </td>
+            <td>
+            <a href="/Product/SatisYap/@u.ProductId" class="btn btn-default" style="background-color:bisque">Satış Yap </a>
             </td>
         </tr>
 
