@@ -141,6 +141,7 @@
     <Compile Include="Controllers\GaleriController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IstatistikController.cs" />
+    <Compile Include="Controllers\KargoController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\SalesController.cs" />
@@ -148,6 +149,10 @@
     <Compile Include="Controllers\YapilacakController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303211900386_kargotest.cs" />
+    <Compile Include="Migrations\202303211900386_kargotest.designer.cs">
+      <DependentUpon>202303211900386_kargotest.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Classes\Admin.cs" />
@@ -161,6 +166,8 @@
     <Compile Include="Models\Classes\Employee.cs" />
     <Compile Include="Models\Classes\Expenses.cs" />
     <Compile Include="Models\Classes\InvoiceAdditions.cs" />
+    <Compile Include="Models\Classes\KargoDetay.cs" />
+    <Compile Include="Models\Classes\KargoTakip.cs" />
     <Compile Include="Models\Classes\Product.cs" />
     <Compile Include="Models\Classes\SalesAction.cs" />
     <Compile Include="Models\Classes\SinifGrup.cs" />
@@ -2931,6 +2938,9 @@
     <Content Include="Views\CariPanel\Siparislerim.cshtml" />
     <Content Include="Views\Alertler\Index.cshtml" />
     <Content Include="Views\Product\SatisYap.cshtml" />
+    <Content Include="Views\Kargo\Index.cshtml" />
+    <Content Include="Views\Kargo\YeniKargo.cshtml" />
+    <Content Include="Views\Kargo\KargoTakip.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2972,6 +2982,11 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202303211900386_kargotest.resx">
+      <DependentUpon>202303211900386_kargotest.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

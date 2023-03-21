@@ -1,0 +1,26 @@
+﻿@using MvcOnlineCommerceAutomation.Models.Classes
+@model List<KargoTakip>
+@{
+    ViewBag.Title = "KargoTakip";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<br />
+<table class="table table-striped">
+    <tr>
+        <th>Açıklama</th>
+        <th>tarih</th>
+    </tr>
+
+    @foreach (var i in Model)
+    {
+        <tr>
+            <td>@i.Aciklama</td>
+            <td>@i.TarihZaman</td>
+        </tr>
+    }
+
+</table>
+
+
+
+
