@@ -50,9 +50,9 @@ namespace MvcOnlineCommerceAutomation.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult KargoTakip(string p)
+        public ActionResult KargoTakip(string Id)
         {
-            var degerler = contex.KargoTakips.Where(x => x.TakipKodu == p).ToList();
+            var degerler = contex.KargoTakips.Where(x => x.TakipKodu == Id).ToList();
             
 
             return View(degerler);

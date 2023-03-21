@@ -65,6 +65,9 @@
     <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="QRCoder">
+      <HintPath>C:\Users\atill\Downloads\QRCoder.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -144,6 +147,7 @@
     <Compile Include="Controllers\KargoController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\QRController.cs" />
     <Compile Include="Controllers\SalesController.cs" />
     <Compile Include="Controllers\UrunDetayController.cs" />
     <Compile Include="Controllers\YapilacakController.cs" />
@@ -2945,6 +2949,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Image\" />
+    <Folder Include="Views\QR\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
