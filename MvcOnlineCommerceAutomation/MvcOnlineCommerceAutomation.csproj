@@ -2945,11 +2945,11 @@
     <Content Include="Views\Kargo\Index.cshtml" />
     <Content Include="Views\Kargo\YeniKargo.cshtml" />
     <Content Include="Views\Kargo\KargoTakip.cshtml" />
+    <Content Include="Views\QR\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Image\" />
-    <Folder Include="Views\QR\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
