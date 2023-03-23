@@ -59,13 +59,13 @@ namespace MvcOnlineCommerceAutomation.Controllers
             List<Sinif1> snf = new List<Sinif1>();
             snf.Add(new Sinif1()
             {
-                UrunAd="bilgisayar",
-                Stok=120
+                UrunAd = "bilgisayar",
+                Stok = 120
             });
             snf.Add(new Sinif1()
             {
-                UrunAd="beyaz eşya",
-                Stok=150
+                UrunAd = "beyaz eşya",
+                Stok = 150
             });
             snf.Add(new Sinif1()
             {
@@ -84,6 +84,35 @@ namespace MvcOnlineCommerceAutomation.Controllers
             });
 
             return snf;
+        }
+
+        public ActionResult Index5()
+        {
+
+            return View();
+        }
+
+        public ActionResult VisualizeUrunResult2()
+        {
+
+            return Json(UrunListesi2(), JsonRequestBehavior.AllowGet);
+        }
+
+        public List<Sinif2> UrunListesi2()
+        {
+            List<Sinif2> snf = new List<Sinif2>();
+            using (var contex = new Context())
+            {
+                snf = contex.Products.Select(x => new Sinif2
+                {
+                    urn = x.ProductName,
+                    stk = x.ProductStock
+                }).ToList();
+
+            }
+
+            return snf;
+
         }
 
     }

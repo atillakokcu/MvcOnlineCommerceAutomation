@@ -176,6 +176,7 @@
     <Compile Include="Models\Classes\Product.cs" />
     <Compile Include="Models\Classes\SalesAction.cs" />
     <Compile Include="Models\Classes\Sinif1.cs" />
+    <Compile Include="Models\Classes\Sinif2.cs" />
     <Compile Include="Models\Classes\SinifGrup.cs" />
     <Compile Include="Models\Classes\SinifGrup2.cs" />
     <Compile Include="Models\Classes\SinifGrup3.cs" />
@@ -2953,6 +2954,7 @@
     <Content Include="Views\Grafik\Index2.cshtml" />
     <Content Include="Views\Grafik\Index3.cshtml" />
     <Content Include="Views\Grafik\Index4.cshtml" />
+    <Content Include="Views\Grafik\Index5.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
