@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Helpers;
+using System.Web.Management;
 using System.Web.Mvc;
 
 namespace MvcOnlineCommerceAutomation.Controllers
@@ -113,6 +114,16 @@ namespace MvcOnlineCommerceAutomation.Controllers
 
             return snf;
 
+        }
+
+        public ActionResult Index6()
+        {
+            return View();
+        }
+
+        public ActionResult Index7()
+        {
+            return View();
         }
 
     }
