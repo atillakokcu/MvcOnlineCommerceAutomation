@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Management;
 using System.Web.Mvc;
 
 namespace MvcOnlineCommerceAutomation.Controllers
@@ -29,5 +30,42 @@ namespace MvcOnlineCommerceAutomation.Controllers
             var degerler = context.SalesActions.Where(x=>x.CustomerId==Id).ToList();
             return View(degerler);
         }
+
+        public ActionResult GelenMesajlar()
+        {
+            var Mail = (string)Session["CustomerMail"];
+            var Mesajlar = context.Mesajlars.Where(x => x.Alici == Mail).ToList();
+            var GelenMesajSayisi= context.Mesajlars.Count(x => x.Alici == Mail).ToString();
+            ViewBag.d1 = GelenMesajSayisi;
+            var GidenMesajSayisi = context.Mesajlars.Count(x => x.Gonderici == Mail).ToString();
+            ViewBag.d2 = GidenMesajSayisi;
+
+            return View(Mesajlar);
+        }
+
+        public ActionResult GidenMesajlar()
+        {
+            var Mail = (string)Session["CustomerMail"];
+            var Mesajlar = context.Mesajlars.Where(x => x.Gonderici == Mail).ToList();
+            var GidenMesajSayisi = context.Mesajlars.Count(x => x.Gonderici == Mail).ToString();
+            var GelenMesajSayisi = context.Mesajlars.Count(x => x.Alici == Mail).ToString();
+            ViewBag.d1 = GelenMesajSayisi;
+            ViewBag.d2 = GidenMesajSayisi;
+            return View(Mesajlar);
+        }
+
+        //[HttpGet]
+        //public ActionResult YeniMesaj()
+        //{
+
+        //    return View();
+        //}
+
+        //[HttpPost]
+        //public ActionResult YeniMesaj()
+        //{
+
+        //    return View();
+        //}
     }
 }
