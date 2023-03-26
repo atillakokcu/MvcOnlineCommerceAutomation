@@ -34,7 +34,7 @@ namespace MvcOnlineCommerceAutomation.Controllers
         public ActionResult GelenMesajlar()
         {
             var Mail = (string)Session["CustomerMail"];
-            var Mesajlar = context.Mesajlars.Where(x => x.Alici == Mail).ToList();
+            var Mesajlar = context.Mesajlars.Where(x => x.Alici == Mail).OrderByDescending(x=>x.MesajId).ToList();
             var GelenMesajSayisi= context.Mesajlars.Count(x => x.Alici == Mail).ToString();
             ViewBag.d1 = GelenMesajSayisi;
             var GidenMesajSayisi = context.Mesajlars.Count(x => x.Gonderici == Mail).ToString();
@@ -46,7 +46,7 @@ namespace MvcOnlineCommerceAutomation.Controllers
         public ActionResult GidenMesajlar()
         {
             var Mail = (string)Session["CustomerMail"];
-            var Mesajlar = context.Mesajlars.Where(x => x.Gonderici == Mail).ToList();
+            var Mesajlar = context.Mesajlars.Where(x => x.Gonderici == Mail).OrderByDescending(x => x.MesajId).ToList();
             var GidenMesajSayisi = context.Mesajlars.Count(x => x.Gonderici == Mail).ToString();
             var GelenMesajSayisi = context.Mesajlars.Count(x => x.Alici == Mail).ToString();
             ViewBag.d1 = GelenMesajSayisi;
@@ -54,18 +54,37 @@ namespace MvcOnlineCommerceAutomation.Controllers
             return View(Mesajlar);
         }
 
-        //[HttpGet]
-        //public ActionResult YeniMesaj()
-        //{
+        public ActionResult MesajDetay(int Id)
+        {
+            var degerler = context.Mesajlars.Where(x=>x.MesajId== Id).ToList();
+            var Mail = (string)Session["CustomerMail"];
+            var GidenMesajSayisi = context.Mesajlars.Count(x => x.Gonderici == Mail).ToString();
+            var GelenMesajSayisi = context.Mesajlars.Count(x => x.Alici == Mail).ToString();
+            ViewBag.d1 = GelenMesajSayisi;
+            ViewBag.d2 = GidenMesajSayisi;
+            return View(degerler);
+        }
 
-        //    return View();
-        //}
+        [HttpGet]
+        public ActionResult YeniMesaj()
+        {
+            var Mail = (string)Session["CustomerMail"];
+            var GidenMesajSayisi = context.Mesajlars.Count(x => x.Gonderici == Mail).ToString();
+            var GelenMesajSayisi = context.Mesajlars.Count(x => x.Alici == Mail).ToString();
+            ViewBag.d1 = GelenMesajSayisi;
+            ViewBag.d2 = GidenMesajSayisi;
+            return View();
+        }
 
-        //[HttpPost]
-        //public ActionResult YeniMesaj()
-        //{
-
-        //    return View();
-        //}
+        [HttpPost]
+        public ActionResult YeniMesaj(Mesajlar mesajlar)
+        {
+            var Mail = (string)Session["CustomerMail"];
+            mesajlar.Tarih = DateTime.Parse(DateTime.Now.ToShortDateString());
+            mesajlar.Gonderici= Mail;
+            context.Mesajlars.Add(mesajlar);
+            context.SaveChanges();
+            return View();
+        }
     }
 }
