@@ -20,6 +20,10 @@ namespace MvcOnlineCommerceAutomation.Controllers
             var Mail = (string)Session["CustomerMail"];
             var degerler = context.Customers.Where(x=>x.CustomerMail== Mail).ToList();
             ViewBag.m = Mail;
+            var MailId = context.Customers.Where(x=>x.CustomerMail ==Mail).Select(y=>y.CustomerId).FirstOrDefault();
+            ViewBag.mid = MailId;
+            var toplamsatis = context.SalesActions.Where(x => x.CustomerId == MailId).Count();
+            ViewBag.toplamsatis = toplamsatis;
             return View(degerler);
         }
 
