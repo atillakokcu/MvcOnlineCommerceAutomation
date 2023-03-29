@@ -18,7 +18,7 @@ namespace MvcOnlineCommerceAutomation.Controllers
         public ActionResult Index()
         {
             var Mail = (string)Session["CustomerMail"];
-            var degerler = context.Customers.FirstOrDefault(x=>x.CustomerMail== Mail);
+            var degerler = context.Customers.Where(x=>x.CustomerMail== Mail).ToList();
             ViewBag.m = Mail;
             return View(degerler);
         }

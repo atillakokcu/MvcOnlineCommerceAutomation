@@ -1,4 +1,5 @@
-﻿@model MvcOnlineCommerceAutomation.Models.Classes.Customer
+﻿@using MvcOnlineCommerceAutomation.Models.Classes
+@model  List<Customer>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_CariLayout.cshtml";
@@ -56,7 +57,7 @@
 
                     <div class="col-sm-6">
 
-                        <h1>Profile</h1>
+                        <h1>Profilim</h1>
 
                     </div>
 
@@ -91,10 +92,14 @@
                                          alt="User profile picture">
 
                                 </div>
+                                @foreach (var x in Model)
+                                {
 
-                                <h3 class="profile-username text-center">Nina Mcintire</h3>
+                                    <h3 class="profile-username text-center">@x.CustomerName @x.CustomerSurname</h3>
 
-                                <p class="text-muted text-center">Software Engineer</p>
+                                    <p class="text-muted text-center">@x.CustomerMail</p>
+                                }
+
 
                                 <ul class="list-group list-group-unbordered mb-3">
 
@@ -139,50 +144,38 @@
 
                             <!-- /.card-header -->
 
-                            <div class="card-body">
+                            @foreach (var y in Model)
+                            {
+                                <div class="card-body">
 
-                                <strong><i class="fas fa-book mr-1"></i> Education</strong>
+                                    <strong><i class="fas fa-book mr-1"></i> Şehir</strong>
 
-                                <p class="text-muted">
+                                    <p class="text-muted">@y.CustomerCity</p>
 
-                                    B.S. in Computer Science from the University of Tennessee at Knoxville
+                                    <hr>
 
-                                </p>
+                                    <strong><i class="fas fa-map-marker-alt mr-1"></i> Meslek</strong>
 
-                                <hr>
+                                    <p class="text-muted">Yazılım Mühendisi</p>
 
-                                <strong><i class="fas fa-map-marker-alt mr-1"></i> Location</strong>
+                                    <hr>
 
-                                <p class="text-muted">Malibu, California</p>
+                                    <strong><i class="fas fa-pencil-alt mr-1"></i> Telefon</strong>
 
-                                <hr>
+                                    <p class="text-muted">
+                                        +90 555 999 88 77
+                                    </p>
 
-                                <strong><i class="fas fa-pencil-alt mr-1"></i> Skills</strong>
+                                    <hr>
 
-                                <p class="text-muted">
+                                    <strong><i class="far fa-file-alt mr-1"></i> Notes</strong>
 
-                                    <span class="tag tag-danger">UI Design</span>
+                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
 
-                                    <span class="tag tag-success">Coding</span>
+                                </div>
 
-                                    <span class="tag tag-info">Javascript</span>
-
-                                    <span class="tag tag-warning">PHP</span>
-
-                                    <span class="tag tag-primary">Node.js</span>
-
-                                </p>
-
-                                <hr>
-
-                                <strong><i class="far fa-file-alt mr-1"></i> Notes</strong>
-
-                                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
-
-                            </div>
-
-                            <!-- /.card-body -->
-
+                                <!-- /.card-body -->
+                            }
                         </div>
 
                         <!-- /.card -->
