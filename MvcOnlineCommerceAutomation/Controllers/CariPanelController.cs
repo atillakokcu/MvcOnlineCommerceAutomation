@@ -24,6 +24,11 @@ namespace MvcOnlineCommerceAutomation.Controllers
             ViewBag.mid = MailId;
             var toplamsatis = context.SalesActions.Where(x => x.CustomerId == MailId).Count();
             ViewBag.toplamsatis = toplamsatis;
+            var toplamtutar = context.SalesActions.Where(x => x.CustomerId == MailId).Sum(y => y.TotalAmount);
+            ViewBag.toplamtutar = toplamtutar;
+            var toplamurunsayisi = context.SalesActions.Where(x => x.CustomerId == MailId).Sum(y => y.Piece);
+            ViewBag.toplamurunsayisi = toplamurunsayisi;
+
             return View(degerler);
         }
 
