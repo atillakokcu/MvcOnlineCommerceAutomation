@@ -8,9 +8,10 @@ using System.Web.Security;
 
 namespace MvcOnlineCommerceAutomation.Controllers
 {
+    [AllowAnonymous]
     public class LoginController : Controller
     {
-
+        
         Context context = new Context();
         // GET: Login
         public ActionResult Index()

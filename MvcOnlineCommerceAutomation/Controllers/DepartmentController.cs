@@ -7,10 +7,12 @@ using System.Web.Mvc;
 using MvcOnlineCommerceAutomation.Models.Classes;
 namespace MvcOnlineCommerceAutomation.Controllers
 {
+    [Authorize]
     public class DepartmentController : Controller
     {
         // GET: Department
         Context contex = new Context();
+        
         public ActionResult Index()
         {
             var degerler = contex.Departments.Where(x => x.Status == true).ToList();
@@ -18,6 +20,7 @@ namespace MvcOnlineCommerceAutomation.Controllers
         }
 
         [HttpGet]
+     
         public ActionResult DepartmanEkle()
         {
             return View();
@@ -25,6 +28,7 @@ namespace MvcOnlineCommerceAutomation.Controllers
 
 
         [HttpPost]
+       
         public ActionResult DepartmanEkle(Department department)
         {
             contex.Departments.Add(department);
