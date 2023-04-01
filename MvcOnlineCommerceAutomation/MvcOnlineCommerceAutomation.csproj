@@ -166,6 +166,7 @@
     <Compile Include="Models\Classes\Bills.cs" />
     <Compile Include="Models\Classes\Class1.cs" />
     <Compile Include="Models\Classes\Class3.cs" />
+    <Compile Include="Models\Classes\Class4.cs" />
     <Compile Include="Models\Classes\Context.cs" />
     <Compile Include="Models\Classes\Customer.cs" />
     <Compile Include="Models\Classes\Category.cs" />
@@ -2969,6 +2970,7 @@
     <Content Include="Views\CariPanel\CariKargoTakip.cshtml" />
     <Content Include="Views\Error\PageError.cshtml" />
     <Content Include="Views\Category\Deneme.cshtml" />
+    <Content Include="Views\Bills\Dinamik.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

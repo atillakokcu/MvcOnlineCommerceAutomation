@@ -7,6 +7,7 @@ using MvcOnlineCommerceAutomation.Models.Classes;
 
 namespace MvcOnlineCommerceAutomation.Controllers
 {
+    [AllowAnonymous]
     public class BillsController : Controller
     {
         // GET: Bills
@@ -81,5 +82,16 @@ namespace MvcOnlineCommerceAutomation.Controllers
             return RedirectToAction("Index");   
 
         }
+
+        public ActionResult Dinamik()
+        {
+            Class4 cs = new Class4();
+            cs.deger1 = context.Billss.ToList();
+            cs.deger2 = context.InvoiceAdditionss.ToList();
+            return View(cs);
+
+        }
+
+
     }
 }
