@@ -58,5 +58,29 @@ namespace MvcOnlineCommerceAutomation.Controllers
 
         }
 
+        public ActionResult Deneme()
+        {
+            Class3 cs = new Class3();
+            cs.Kategoriler = new SelectList(context.Categorys,"CategoryId","CategoryName");
+            cs.Urunler = new SelectList(context.Products, "ProductId", "ProductName");
+            return View(cs);
+        }
+
+        public JsonResult UrunGetir(int p)
+        {
+            var urunlistesi = (from x in context.Products
+                               join y in context.Categorys
+                               on x.CategoryId equals y.CategoryId
+                               where x.Category.CategoryId == p 
+                               select new
+                               {
+                                   Text = x.ProductName,
+                                   Value = x.ProductId.ToString(),
+                               }).ToList();
+
+            return Json(urunlistesi,JsonRequestBehavior.AllowGet);
+
+        }
+
     }
 }
