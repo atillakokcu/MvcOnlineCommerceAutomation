@@ -40,20 +40,20 @@ namespace MvcOnlineCommerceAutomation.Controllers
         {
             var Fatura = context.Billss.Find(Id);
 
-            return View("FaturaGetir",Fatura);
+            return View("FaturaGetir", Fatura);
 
         }
 
         public ActionResult FaturaGuncelle(Bills FaturaGuncelleme)
         {
             var Fatura = context.Billss.Find(FaturaGuncelleme.BillId);
-            Fatura.BillSerialNo= FaturaGuncelleme.BillSerialNo;
-            Fatura.BillSiraNo= FaturaGuncelleme.BillSiraNo;
-            Fatura.BillDate= FaturaGuncelleme.BillDate;
-            Fatura.BillTime= FaturaGuncelleme.BillTime;
-            Fatura.TeslimAlan= FaturaGuncelleme.TeslimAlan;
-            Fatura.TeslimEden= FaturaGuncelleme.TeslimEden;
-            Fatura.TaxOffice= FaturaGuncelleme.TaxOffice;
+            Fatura.BillSerialNo = FaturaGuncelleme.BillSerialNo;
+            Fatura.BillSiraNo = FaturaGuncelleme.BillSiraNo;
+            Fatura.BillDate = FaturaGuncelleme.BillDate;
+            Fatura.BillTime = FaturaGuncelleme.BillTime;
+            Fatura.TeslimAlan = FaturaGuncelleme.TeslimAlan;
+            Fatura.TeslimEden = FaturaGuncelleme.TeslimEden;
+            Fatura.TaxOffice = FaturaGuncelleme.TaxOffice;
             context.SaveChanges();
             return RedirectToAction("Index");
 
@@ -61,7 +61,7 @@ namespace MvcOnlineCommerceAutomation.Controllers
 
         public ActionResult FaturaDetay(int Id)
         {
-            var degerler = context.InvoiceAdditionss.Where(x=>x.BillId==Id).ToList();
+            var degerler = context.InvoiceAdditionss.Where(x => x.BillId == Id).ToList();
 
             return View(degerler);
 
@@ -79,7 +79,7 @@ namespace MvcOnlineCommerceAutomation.Controllers
         {
             context.InvoiceAdditionss.Add(FaturaKalem);
             context.SaveChanges();
-            return RedirectToAction("Index");   
+            return RedirectToAction("Index");
 
         }
 
@@ -92,6 +92,21 @@ namespace MvcOnlineCommerceAutomation.Controllers
 
         }
 
+        public ActionResult FaturaKaydet(string faturaserino, string faturasirano, DateTime Tarih, string vergidaire, string teslimeden, string teslimalan, string toplam, InvoiceAdditions[] kalemler)
+        {
+            Bills f = new Bills();
+            f.BillSerialNo= faturaserino;
+            f.BillSiraNo= faturasirano;
+            f.BillDate = Tarih;
+            f.TaxOffice = vergidaire;
+            f.TeslimAlan= teslimalan;
+            f.TeslimEden= teslimeden;
+            f.Toplam = decimal.Parse(toplam);
+            context.Billss.Add(f);
+            context.SaveChanges();
+            return Json("işlem başarılı",JsonRequestBehavior.AllowGet);
+
+        }
 
     }
 }
