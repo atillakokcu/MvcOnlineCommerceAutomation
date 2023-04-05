@@ -19,8 +19,8 @@ namespace MvcOnlineCommerceAutomation.Controllers
             return View(degerler);
         }
 
+        [Authorize(Roles ="A")]
         [HttpGet]
-     
         public ActionResult DepartmanEkle()
         {
             return View();

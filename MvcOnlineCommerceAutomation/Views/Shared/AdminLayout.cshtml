@@ -35,7 +35,7 @@
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                     <a class="dropdown-item" href="#">Ayarlar</a><a class="dropdown-item" href="#">Hesabım</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="login.html">Çıkış Yap</a>
+                    <a class="dropdown-item" href="/Login/Logout">Çıkış Yap</a>
                 </div>
             </li>
         </ul>
@@ -102,7 +102,7 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-procedures"></i></div>
                             Dinamik Faturalar
                         </a>
-                        a class="nav-link" href="/Employee/PersonelListe">
+                        <a class="nav-link" href="/Employee/PersonelListe">
                         <div class="sb-nav-link-icon"><i class="fas fa-people-carry"></i></div>
                         Personel tablosu
                         </a>
@@ -135,10 +135,13 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-university"></i></div>
                             Ürün Detay
                         </a>
+                        @if (User.IsInRole("A"))
+                        {
                         <a class="nav-link" href="/Istatistik/KolayTablolar">
                             <div class="sb-nav-link-icon"><i class="fas fa-car"></i></div>
                             Hızlı Bakış
                         </a>
+                        }
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
