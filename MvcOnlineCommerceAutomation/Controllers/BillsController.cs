@@ -92,17 +92,28 @@ namespace MvcOnlineCommerceAutomation.Controllers
 
         }
 
-        public ActionResult FaturaKaydet(string faturaserino, string faturasirano, DateTime Tarih, string vergidaire, string teslimeden, string teslimalan, string toplam, InvoiceAdditions[] kalemler)
+        public ActionResult FaturaKaydet(string BillSerialNo, string BillSiraNo, DateTime BillDate, string TaxOffice, string BillTime, string TeslimEden, string TeslimAlan, string Toplam, InvoiceAdditions[] kalemler)
         {
             Bills f = new Bills();
-            f.BillSerialNo= faturaserino;
-            f.BillSiraNo= faturasirano;
-            f.BillDate = Tarih;
-            f.TaxOffice = vergidaire;
-            f.TeslimAlan= teslimalan;
-            f.TeslimEden= teslimeden;
-            f.Toplam = decimal.Parse(toplam);
+            f.BillSerialNo= BillSerialNo;
+            f.BillSiraNo = BillSiraNo;
+            f.BillDate = BillDate;
+            f.BillTime = BillTime;
+            f.TaxOffice = TaxOffice;
+            f.TeslimAlan= TeslimAlan;
+            f.TeslimEden= TeslimEden;
+            f.Toplam = decimal.Parse(Toplam);
             context.Billss.Add(f);
+            foreach(var x in kalemler)
+            {
+                InvoiceAdditions fk = new InvoiceAdditions();
+                fk.InvoiceDescription = x.InvoiceDescription;
+                fk.InvoiceUnitPrice= x.InvoiceUnitPrice;
+                fk.BillId= x.BillId;
+                fk.InvoiceAmount= x.InvoiceAmount;
+                fk.InvoiceTotalPrice= x.InvoiceTotalPrice;
+                context.InvoiceAdditionss.Add(fk);
+            }
             context.SaveChanges();
             return Json("işlem başarılı",JsonRequestBehavior.AllowGet);
 

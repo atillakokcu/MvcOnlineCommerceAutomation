@@ -42,16 +42,20 @@
                                     @{
                                         var totalBill = 0;
                                     }
-                                    @foreach (var order in item.InvoiceAdditionss)
+                                    @if (item.InvoiceAdditionss != null)
                                     {
-                                        <tr>
-                                            <td>@order.InvoiceDescription</td>
-                                            <td>@order.InvoiceAmount</td>
-                                            <td>@order.InvoiceUnitPrice</td>
-                                            <td>@order.InvoiceTotalPrice</td>
-                                        </tr>
-                                        totalBill = totalBill + @Convert.ToInt32(order.InvoiceTotalPrice);
+                                        foreach (var order in item.InvoiceAdditionss)
+                                        {
+                                            <tr>
+                                                <td>@order.InvoiceDescription</td>
+                                                <td>@order.InvoiceAmount</td>
+                                                <td>@order.InvoiceUnitPrice</td>
+                                                <td>@order.InvoiceTotalPrice</td>
+                                            </tr>
+                                            totalBill = totalBill + @Convert.ToInt32(order.InvoiceTotalPrice);
+                                        }
                                     }
+                                    
                                 </tbody>
                             </table>
                             <span class="pull-right" style="margin-right:100px;"><strong>Fatura Toplam Tutar :  </strong> @totalBill</span>
@@ -84,27 +88,29 @@
                                 Seri No
                             </label>
                             <div class="col-md-4">
-                                <input type="text" id="FaturaSeriNo" name="FaturaSeriNo" placeholder="Seri Numarası" class="form-control" />
+                                <input type="text" id="BillSerialNo" name="BillSerialNo" placeholder="Seri Numarası" class="form-control" />
                             </div>
                             <label class="control-label col-md-2">
                                 Sıra No
                             </label>
                             <div class="col-md-4">
-                                <input type="text" id="FaturaSıraNo" name="FaturaSıraNo" placeholder="Sıra Numarası" class="form-control" />
+                                <input type="text" id="BillSiraNo" name="BillSiraNo" placeholder="Sıra Numarası" class="form-control" />
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-2">
                                 Tarih
                             </label>
-                            <div class="col-md-4">
-                                <input type="text" id="Tarih" name="Tarih" placeholder="Tarihi Giriniz" class="form-control" />
+                            <div>
+                                <div class="col-md-4">
+                                    <input type="text" id="BillDate" name="BillDate" placeholder="Tarihi Giriniz" class="form-control" />
+                                </div>
                             </div>
                             <label class="control-label col-md-2">
                                 Vergi Dairesi
                             </label>
                             <div class="col-md-4">
-                                <input type="text" id="VergiDairesi" name="VergiDairesi" placeholder="Vergi Dairesi" class="form-control" />
+                                <input type="text" id="TaxOffice" name="TaxOffice" placeholder="Vergi Dairesi" class="form-control" />
                             </div>
                         </div>
                         <div class="form-group">
@@ -112,7 +118,7 @@
                                 Saat
                             </label>
                             <div class="col-md-4">
-                                <input type="text" id="Saat" name="Saat" placeholder="Saati Girin" class="form-control" />
+                                <input type="text" id="BillTime" name="BillTime" placeholder="Saati Girin" class="form-control" />
                             </div>
                             <label class="control-label col-md-2">
                                 Teslim Eden
@@ -146,13 +152,13 @@
                                 Açıklama
                             </label>
                             <div class="col-md-4">
-                                <input type="text" id="InvoiceDescription" name="Aciklama" placeholder="Ürün / Birim Açıklamasını Giriniz" class="form-control" />
+                                <input type="text" id="InvoiceDescription" name="InvoiceDescription" placeholder="Ürün / Birim Açıklamasını Giriniz" class="form-control" />
                             </div>
                             <label class="control-label col-md-2">
                                 Fiyat
                             </label>
                             <div class="col-md-4">
-                                <input type="number" id="InvoiceUnitPrice" name="BirimFiyat" placeholder="Birim Başına Fiyat Miktarı" class="form-control" />
+                                <input type="number" id="InvoiceUnitPrice" name="InvoiceUnitPrice" placeholder="Birim Başına Fiyat Miktarı" class="form-control" />
                             </div>
                         </div>
 
@@ -161,7 +167,7 @@
                                 Miktar
                             </label>
                             <div class="col-md-4">
-                                <input type="number" id="Miktar" name="InvoiceAmount" placeholder="Miktar Giriniz" class="form-control" />
+                                <input type="number" id="InvoiceAmount" name="InvoiceAmount" placeholder="Miktar Giriniz" class="form-control" />
                             </div>
                             <div class="col-md-2 col-lg-offset-4">
                                 <a id="addToList" class="btn btn-primary">Listeye Ekle</a>
@@ -204,12 +210,12 @@
 
             if ($.trim($("#InvoiceDescription").val()) == "" || $.trim($("#InvoiceUnitPrice").val()) == "" || $.trim($("#InvoiceAmount").val()) == "") return;
 
-            var Aciklama = $("#InvoiceDescription").val(),
-                BirimFiyat = $("#InvoiceUnitPrice").val(),
-                Miktar = $("#InvoiceAmount").val(),
+            var InvoiceDescription = $("#InvoiceDescription").val(),
+                InvoiceUnitPrice = $("#InvoiceUnitPrice").val(),
+                InvoiceAmount = $("#InvoiceAmount").val(),
                 detailsTableBody = $("#detailsTable tbody");
 
-            var degerler = '<tr><td>' + Aciklama + '</td><td>' + Miktar + '</td><td>' + BirimFiyat + '</td><td>' + (parseFloat(BirimFiyat) * parseInt(Miktar)) + '</td><td><a data-itemId="0" href="#" class="deleteItem">Çıkar</a></td></tr>';
+            var degerler = '<tr><td>' + InvoiceDescription + '</td><td>' + InvoiceAmount + '</td><td>' + InvoiceUnitPrice + '</td><td>' + (parseFloat(InvoiceUnitPrice) * parseInt(InvoiceAmount)) + '</td><td><a data-itemId="0" href="#" class="deleteItem">Çıkar</a></td></tr>';
             detailsTableBody.append(degerler);
             clearItem();
         });
@@ -255,20 +261,20 @@
 
             $.each($("#detailsTable tbody tr"), function () {
                 orderArr.push({
-                    Aciklama: $(this).find('td:eq(0)').html(),
-                    Miktar: $(this).find('td:eq(1)').html(),
-                    BirimFiyat: $(this).find('td:eq(2)').html(),
+                    InvoiceDescription: $(this).find('td:eq(0)').html(),
+                    InvoiceAmount: $(this).find('td:eq(1)').html(),
+                    InvoiceUnitPrice: $(this).find('td:eq(2)').html(),
                     Tutar: $(this).find('td:eq(3)').html()
                 });
             });
 
 
             var data = JSON.stringify({
-                FaturaSeriNo: $("#FaturaSeriNo").val(),
-                FaturaSıraNo: $("#FaturaSıraNo").val(),
-                Tarih: $("#Tarih").val(),
-                Saat: $("#Saat").val(),
-                VergiDairesi: $("#VergiDairesi").val(),
+                BillSerialNo: $("#BillSerialNo").val(),
+                BillSiraNo: $("#BillSiraNo").val(),
+                BillDate: $("#BillDate").val(),
+                BillTime: $("#BillTime").val(),
+                TaxOffice: $("#TaxOffice").val(),
                 TeslimEden: $("#TeslimEden").val(),
                 TeslimAlan: $("#TeslimAlan").val(),
                 Toplam: $("#Toplam").val(),
